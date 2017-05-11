@@ -1,0 +1,61 @@
+{% block menu_etat %}
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+        <a href="#">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea Four -->
+                <div class="widget widget-shadow" id="widgetLineareaFour">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-car grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    Tout
+                                </div>
+                                <span class="pull-right padding-top-10 grey-700 font-size-15">{{ total_tout }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Four -->
+            </div>
+        </a>
+        <a href="#">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea Four -->
+                <div class="widget widget-shadow" id="widgetLineareaFour">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-check-circle grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    Disponible
+                                </div>
+                                <span class="pull-right padding-top-10 grey-700 font-size-15">{{ total_disponible }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Four -->
+            </div>
+        </a>
+        <a href="#">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea One-->
+                <div class="widget widget-shadow" id="widgetLineareaOne">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-alert-circle-o grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    Indisponible
+                                </div>
+                                <span class="pull-right grey-700 padding-top-10 font-size-15">{{ total_indisponible }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea One -->
+            </div>
+        </a>
+    </div>
+{% endblock menu_etat %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Acquisition</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ acquisition.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ acquisition.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Dateacquisition</th>
+                <td>{% if acquisition.dateAcquisition %}{{ acquisition.dateAcquisition|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Montantacquisition</th>
+                <td>{% if acquisition.montantAcquisition %}{{ acquisition.montantAcquisition|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefinlocation</th>
+                <td>{% if acquisition.dateFinLocation %}{{ acquisition.dateFinLocation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefinleasing</th>
+                <td>{% if acquisition.dateFinLeasing %}{{ acquisition.dateFinLeasing|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('acquisition_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('acquisition_edit', { 'id': acquisition.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% block menu_etat %}
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+        <a href="{{ path("utilisation_index") }}">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea Four -->
+                <div class="widget widget-shadow" id="widgetLineareaFour">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-archive grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    Tout
+                                </div>
+                                <span class="pull-right padding-top-10 grey-700 font-size-15">{{ total }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Four -->
+            </div>
+        </a>
+        <a href="{{ path("utilisation_index_encours") }}">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea One-->
+                <div class="widget widget-shadow" id="widgetLineareaOne">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-assignment grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    En cours
+                                </div>
+                                <span class="pull-right grey-700 padding-top-10 font-size-15">{{ total_encours }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea One -->
+            </div>
+        </a>
+        <a href="{{ path("utilisation_index_attente") }}">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea Two -->
+                <div class="widget widget-shadow" id="widgetLineareaTwo">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-assignment-o grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    En attente
+                                </div>
+                                <span class="pull-right padding-top-10 grey-700 font-size-15">{{ total_enattente }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Two -->
+            </div>
+        </a>
+        <a href="{{ path("utilisation_index_termine") }}">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea Three -->
+                <div class="widget widget-shadow" id="widgetLineareaThree">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-assignment-check grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    Terminé
+                                </div>
+                                <span class="pull-right padding-top-10 grey-700 font-size-15">{{ total_termine }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Three -->
+            </div>
+        </a>
+        <a href="{{ path("utilisation_index_annule") }}">
+            <div class="col-lg-2 col-sm-6">
+                <!-- Widget Linearea Four -->
+                <div class="widget widget-shadow" id="widgetLineareaFour">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-tag-close grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>
+                                    Annulé
+                                </div>
+                                <span class="pull-right padding-top-10 grey-700 font-size-15">{{ total_annule }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Four -->
+            </div>
+        </a>
+
+    </div>
+{% endblock menu_etat %}

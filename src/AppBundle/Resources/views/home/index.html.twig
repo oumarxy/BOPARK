@@ -1,0 +1,478 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!-- Page -->
+
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+
+        <div class="col-lg-12 col-sm-12">
+            <div class="col-lg-3 col-sm-6">
+                <!-- Widget Linearea One-->
+                <div class="widget widget-shadow" id="widgetLineareaOne">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-account grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    User
+                                </div>
+                                <span class="pull-right grey-700 font-size-30">1,253</span>
+                            </div>
+                            <div class="margin-bottom-20 grey-500">
+                                <i class="icon md-long-arrow-up green-500 font-size-16"></i> 15% From this yesterday
+                            </div>
+                            <div class="ct-chart height-50"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea One -->
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <!-- Widget Linearea Two -->
+                <div class="widget widget-shadow" id="widgetLineareaTwo">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-flash grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    VISITS
+                                </div>
+                                <span class="pull-right grey-700 font-size-30">2,425</span>
+                            </div>
+                            <div class="margin-bottom-20 grey-500">
+                                <i class="icon md-long-arrow-up green-500 font-size-16"></i> 34.2% From this week
+                            </div>
+                            <div class="ct-chart height-50"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Two -->
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <!-- Widget Linearea Three -->
+                <div class="widget widget-shadow" id="widgetLineareaThree">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-chart grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    Total Clicks
+                                </div>
+                                <span class="pull-right grey-700 font-size-30">1,864</span>
+                            </div>
+                            <div class="margin-bottom-20 grey-500">
+                                <i class="icon md-long-arrow-down red-500 font-size-16"></i>  5% From this yesterday
+                            </div>
+                            <div class="ct-chart height-50"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Three -->
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <!-- Widget Linearea Four -->
+                <div class="widget widget-shadow" id="widgetLineareaFour">
+                    <div class="widget-content">
+                        <div class="padding-20 padding-top-10">
+                            <div class="clearfix">
+                                <div class="grey-800 pull-left padding-vertical-10">
+                                    <i class="icon md-view-list grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    Items
+                                </div>
+                                <span class="pull-right grey-700 font-size-30">845</span>
+                            </div>
+                            <div class="margin-bottom-20 grey-500">
+                                <i class="icon md-long-arrow-up green-500 font-size-16"></i> 18.4% From this yesterday
+                            </div>
+                            <div class="ct-chart height-50"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget Linearea Four -->
+            </div>
+
+
+
+            <div class="clearfix"></div>
+
+            <div class="col-lg-3 col-md-4  padding-horizontal-0 padding-vertical-0">
+                <!-- Widget Info -->
+                <div class="widget widget-shadow">
+
+                    <div class="widget-body">
+                        <div class="font-size-15 grey-600">
+                            Ajoutée le 7 juin 2016
+                            00:06 _ Page d'accueil
+                            02:24 _ Gestion des profils
+                            03:10 _ Module - Classement des véhicules
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Widget Info -->
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Widget Info -->
+                    <div class="widget widget-shadow">
+                        <div class="widget-header cover overlay">
+                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
+
+                                <div class="font-size-20 padding-10">Gestion véhicules</div>
+                            </div>
+                        </div>
+                        <div class="widget-body padding-horizontal-0 padding-vertical-0" style="height:calc(100% - 250px);">
+                            <div class="font-size-20 grey-500">
+                                <a class="list-group-item" href="{{path('vehicule_index')}}" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Parc</h6>
+                                            <span class="media-meta font-size-14 ">{{countVehicule}} Véhicule(s) </span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Contrats d'achat </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Contrats de location</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">5 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Contrats de leasing</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Véhicules reformés</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Kilomètrage des véhicules</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Index horaire des véhicules</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Informations supplémentaires</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Véhicules de remplacement</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Widget Info -->
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Widget Info -->
+                    <div class="widget widget-shadow">
+                        <div class="widget-header cover overlay">
+                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
+
+                                <div class="font-size-20 padding-10">Utilisations</div>
+                            </div>
+                        </div>
+                        <div class="widget-body padding-horizontal-0 padding-vertical-0" style="height:calc(100% - 250px);">
+                            <div class="font-size-20 grey-500">
+                                <a class="list-group-item" href="{{path('utilisation_index')}}" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Utilisations</h6>
+                                            <span class="media-meta font-size-14 ">{{countVehicule}} Véhicule(s) </span>
+
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="{{ path("conducteur_index") }}" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Collaborateurs </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Ordre de mission</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">5 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Widget Info -->
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Widget Info -->
+                    <div class="widget widget-shadow">
+                        <div class="widget-header cover overlay">
+                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
+
+                                <div class="font-size-20 padding-10">Consommations</div>
+                            </div>
+                        </div>
+                        <div class="widget-body padding-horizontal-0 padding-vertical-0" style="height:calc(100% - 250px);">
+                            <div class="font-size-20 grey-500">
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Consommation carburant</h6>
+                                            <time class="media-meta font-size-12 " datetime="2015-06-12T20:50:48+08:00">5 Véhicules </time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Péage autoroute</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Services</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">5 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Dépenses diverses</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Carte de consommation</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Recharge des cartes</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Stations</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Pompes Carburant</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Fichier de consommation </h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Widget Info -->
+                </div>
+
+
+                <div class="col-lg-4 col-md-6">
+                    <!-- Widget Info -->
+                    <div class="widget widget-shadow">
+                        <div class="widget-header cover overlay">
+                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
+
+                                <div class="font-size-20 padding-10">Gestion véhicules</div>
+                            </div>
+                        </div>
+                        <div class="widget-body padding-horizontal-0 padding-vertical-0" style="height:calc(100% - 250px);">
+                            <div class="font-size-20 grey-500">
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Parc</h6>
+                                            <time class="media-meta font-size-12 " datetime="2015-06-12T20:50:48+08:00">5 Véhicules </time>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Contrats d'achat </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Contrats de location</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">5 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                                    <div class="media">
+                                        <div class="media-left padding-horizontal-5">
+                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-body padding-left-10">
+                                            <h6 class="font-size-16 grey-600 media-heading">Contrats de leasing</h6>
+                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
+                                        </div>
+                                    </div>
+                                </a>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Widget Info -->
+                </div>
+
+
+            </div>
+        </div>
+        <!-- End Page -->
+
+
+    {% endblock %}

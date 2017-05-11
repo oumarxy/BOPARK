@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+{% block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
+{% endblock %}
+{% block body %}
+
+    {{ form_start(edit_form, {'action': path('conducteur_edit', { 'id': conducteur.id }), 'method': 'POST'} ) }}
+
+    <div class="modal-body padding-horizontal-80">
+        <div class="row ">
+            <div class="col-lg-5 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputNom">Nom</label>
+                {{ form_widget(edit_form.nom, {'attr':
+                    {'class':'form-control','placeholder':'Nom','autocomplete':'off'}, 'id':'inputNom'}) }}
+            </div>
+            <div class="col-lg-7 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputPrenoms">Prénoms</label>
+                {{ form_widget(edit_form.prenoms, {'attr':
+                    {'class':'form-control','placeholder':'Nom','autocomplete':'off'}, 'id':'inputPrenoms'}) }}
+            </div>
+        </div>
+        <div class="row"><hr /></div>
+        <div class="row">
+            <div class="col-lg-4 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputDateNaiss">Date de naissance</label>
+                {{ form_widget(edit_form.dateNaissance, {'attr':
+                    {'class':'form-control mydate','type': 'text','placeholder':'Date de naissance'}, 'id':'inputDateNaiss'}) }}
+            </div>
+            <div class="col-lg-4 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputLieuNaiss">Lieu de naissance</label>
+                {{ form_widget(edit_form.lieuDeNaissance, {'attr':
+                    {'class':'form-control','placeholder':'Lieu de naissance','autocomplete':'off'}, 'id':'inputLieuNaiss'}) }}
+            </div>
+            <div class="col-lg-4 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputFonction">Fonction</label>
+                {{ form_widget(edit_form.fonction, {'attr':
+                    {'class':'form-control','placeholder':'Fonction','autocomplete':'off'}, 'id':'inputFonction'}) }}
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-4 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputEmail">Email</label>
+                {{ form_widget(edit_form.email, {'attr':
+                    {'class':'form-control','data-plugin':'datepicker','type': 'text','placeholder':'Email'}, 'id':'inputEmail'}) }}
+            </div>
+            <div class="col-lg-4 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputContact">Contact</label>
+                {{ form_widget(edit_form.contact, {'attr':
+                    {'class':'form-control','placeholder':'Contact','autocomplete':'off'}, 'id':'inputContact'}) }}
+            </div>
+            <div class="col-lg-4 form-group">
+                <label class="control-label padding-left-10"
+                       for="inputPermis">Permis</label>
+                {{ form_widget(edit_form.permis, {'attr':
+                    {'class':'form-control','placeholder':'N° Permis','autocomplete':'off'}, 'id':'inputPermis'}) }}
+            </div>
+        </div>
+        <div class="row"><hr /></div>
+        <div class="row">
+            <a class="btn btn-danger" href="{{ path('conducteur_index') }}">Retour</a>
+            <button class="btn btn-primary"
+                    type="submit">Modifier
+            </button>
+        </div>
+        {{ form_widget(edit_form._token) }}
+    </div>
+    {{ form_end(edit_form) }}
+
+    {#
+    <ul>
+        <li>
+
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}
+{% endblock %}
+
+{% block scriptsjs %}
+    <script src="{{ asset('custom/js/datedropper.js') }}"></script>
+    <script>
+        $( ".mydate" ).dateDropper({
+            lang: 'fr',
+            animate:true,
+            format:'d-m-Y'
+        });
+    </script>
+{% endblock %}

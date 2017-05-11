@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+
+{% block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <!-- Modal -->
+            <div class="modal fade modal-fill-in" id="modalConducteur" aria-hidden="false" aria-labelledby="modalConducteur"
+                 role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">× </span>
+                            </button>
+                            <h4 class="modal-title" id="modalConducteurModalTitle">Nouveau conducteur</h4>
+                        </div>
+                        <div class="modal-body">
+                            {{  form_start(form, {'action': path('conducteur_index'), 'method': 'POST'} ) }}
+                            <div class="row">
+                                <div class="col-lg-5 form-group">
+                                    {{ form_widget(form.nom, {'attr':
+                                            {'class':'form-control','placeholder':'Nom','autocomplete':'off'}}) }}
+                                </div>
+                                <div class="col-lg-7 form-group">
+                                    {{ form_widget(form.prenoms, {'attr':
+                                            {'class':'form-control','placeholder':'Nom','autocomplete':'off'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 form-group">
+                                    {{ form_widget(form.dateNaissance, {'attr':
+                                            {'class':'form-control mydate','type': 'text','placeholder':'Date de naissance'}}) }}
+                                </div>
+                                <div class="col-lg-4 form-group">
+                                    {{ form_widget(form.lieuDeNaissance, {'attr':
+                                            {'class':'form-control','placeholder':'Lieu de naissance','autocomplete':'off'}}) }}
+                                </div>
+                                <div class="col-lg-4 form-group">
+                                    {{ form_widget(form.fonction, {'attr':
+                                            {'class':'form-control','placeholder':'Fonction','autocomplete':'off'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 form-group">
+                                    {{ form_widget(form.email, {'attr':
+                                            {'class':'form-control','data-plugin':'datepicker','type': 'text','placeholder':'Email'}}) }}
+                                </div>
+                                <div class="col-lg-4 form-group">
+                                    {{ form_widget(form.contact, {'attr':
+                                            {'class':'form-control','placeholder':'Contact','autocomplete':'off'}}) }}
+                                </div>
+                                <div class="col-lg-4 form-group">
+                                    {{ form_widget(form.permis, {'attr':
+                                            {'class':'form-control','placeholder':'N° Permis','autocomplete':'off'}}) }}
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">Fermer </span>
+                            </button>
+                            <button class="btn btn-primary"
+                                    type="submit">Ajouter</button>
+
+                            {{ form_widget(form._token) }}
+                            {{  form_end(form, {"render_rest":false}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <button type="button" data-target="#modalConducteur" data-toggle="modal"
+                        class="btn btn-floating btn-info btn-sm waves-effect waves-float waves-light">
+                    <i class="icon md-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+            <h3 class="panel-title">Vehicules</h3>
+        </header>
+        <div class="panel-body">
+            <table class="table table-hover dataTable table-striped width-full" data-plugin="dataTable">
+                <thead>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Nom</th>
+                        <th>Prénoms</th>
+                        <th>Date naissance</th>
+                        <th>Lieu de naissance</th>
+                        <th>Fonction</th>
+                        <th>Email</th>
+                        <th>Contacts</th>
+                        <th>Permis</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Actions</th>
+                        <th>Nom</th>
+                        <th>Prénoms</th>
+                        <th>Date naissance</th>
+                        <th>Lieu de naissance</th>
+                        <th>Fonction</th>
+                        <th>Email</th>
+                        <th>Contacts</th>
+                        <th>Permis</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for conducteur in conducteurs %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}">
+                                    <i class="icon md-edit bg-green-600 white icon-circle" aria-hidden="true"></i>
+                                </a>
+                                <a href="{{ path('conducteur_show', { 'id': conducteur.id }) }}">
+                                    <i class="icon md-eye bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                            <td>{{ conducteur.nom }}</td>
+                            <td>{{ conducteur.prenoms }}</td>
+                            <td>{% if conducteur.dateNaissance %}{{ conducteur.dateNaissance|date('d-m-Y') }}{% endif %}</td>
+                            <td>{{ conducteur.lieuDeNaissance }}</td>
+                            <td>{{ conducteur.fonction }}</td>
+                            <td>{{ conducteur.email }}</td>
+                            <td>{{ conducteur.contact }}</td>
+                            <td>{{ conducteur.permis }}</td>
+
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block scriptsjs %}
+    <script src="{{ asset('custom/js/datedropper.js') }}"></script>
+    <script>
+        $( ".mydate" ).dateDropper({
+            lang: 'fr',
+            animate:true,
+            format:'d-m-Y'
+        });
+    </script>
+{% endblock %}

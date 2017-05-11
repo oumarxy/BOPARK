@@ -1,0 +1,277 @@
+{% extends 'base.html.twig' %}
+
+{% block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('global/vendor/select2/select2.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/icheck/icheck.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/multi-select/multi-select.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('custom/css/timedropper.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/flag-icon-css/flag-icon.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/examples/css/forms/advanced.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-markdown/bootstrap-markdown.css') }}"/>
+    <style type="text/css">
+        .md-editor{
+            width: 100% !important;
+            margin: 0px !important;
+        }
+    </style>
+{% endblock %}
+
+{% block fontscss %}
+    <link rel="stylesheet" href="{{ asset('global/fonts/font-awesome/font-awesome.css') }}"/>
+{% endblock %}
+
+
+{% block body %}
+    <div class="container" style="margin: 0 auto">
+        {{ form_start(form) }}
+        <div class="row" style="padding: 0px;">
+            <div class="col-sm-6">
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-dark">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Véhicule</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                {{ form_widget(form.vehicule, {'id':'selectionVehicule','attr':
+                                {'class':'form-control','data-plugin':'select2', 'data-placeholder':'Véhicule','data-allow-clear':'false'}}) }}
+                            </div>
+                            <div class="col-md-12">
+                                <table id="detailsvehicule" class="table table-hover" >
+                                    {# <tr>
+                                            <td>Place</td>
+                                            <td>4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Poids</td>
+                                            <td>1.5T</td>
+                                        </tr>#}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Date</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div data-plugin="datepair">
+                                <div class="input-daterange-wrap col-sm-12">
+                                    <div class="input-daterange">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="icon md-calendar" aria-hidden="true"></i>
+                                            </span>
+                                            {{ form_widget(form.dateDebut, {'attr':
+                                                {'class':'form-control  mydate','type':'text'}}) }}
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="icon md-time" aria-hidden="true"></i>
+                                            </span>
+
+                                            {{ form_widget(form.heureDebut, {'attr':
+                                                {'class':'form-control mytime','type':'text','value':''}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+
+                                <div class="input-daterange-to ">à</div>
+                                <br/>
+                                <div class="input-daterange-wrap col-sm-12">
+                                    <div class="input-daterange">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="icon md-calendar" aria-hidden="true"></i>
+                                            </span>
+                                            {{ form_widget(form.dateFin, {'attr':
+                                                {'class':'form-control mydate','type':'text'}}) }}
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="icon md-time" aria-hidden="true"></i>
+                                            </span>
+                                            {{ form_widget(form.heureFin, {'attr':
+                                                {'class':'form-control mytime','type':'text','value':'00:00'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-primary">
+                        <div class="panel-heading ">
+                            <h3 class="panel-title">Etat véhicule</h3>
+                        </div>
+                        <div class="panel-body" style="padding: 20px 20px 20px 20px !important;">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="control-label padding-left-10"
+                                           for="inputKilometrageDepart">Kil. Départ</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            {{ form_widget(form.kilometrageDepart, {'attr':
+                                            {'class':'form-control padding-left-10','placeholder':'ex : 15000','min':'0','autocomplete':'off'},
+                                            'id':'inputKilometrageDepart'}) }}
+                                            <span class="input-group-addon" style="border: 1px solid gainsboro">Km</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label padding-left-10"
+                                           for="inputKilometrageArrivee">Kil. Arrivée</label>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            {{ form_widget(form.kilometrageArrivee, {'attr':
+                                            {'class':'form-control padding-left-10','placeholder':'ex : 17800','min':'0','autocomplete':'off','disabled':'disabled'},
+                                            'id':'inputKilometrageArrivee'}) }}
+                                            <span class="input-group-addon" style="border: 1px solid gainsboro">Km</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="divider"/>
+                                <div class="col-sm-6">
+                                    <label class="control-label padding-left-10" for="inputEtatCarburantDepart">Etat du  carburant</label>
+                                        {{ form_widget(form.etatCarburantDepart, {'attr':
+                                    {'class':'form-control','data-plugin':'select2', 'data-placeholder':'Départ','data-allow-clear':'true'},
+                                    'id':'inputEtatCarburantDepart'}) }}
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="control-label padding-left-10" for="inputEtatCarburantArrivee">.</label>
+                                    {{ form_widget(form.etatCarburantArrivee, {'attr':
+                                    {'class':'form-control','data-plugin':'select2', 'data-placeholder':'Arrivée','data-allow-clear':'true','disabled':'disabled'},
+                                    'id':'inputEtatCarburantArrivee'}) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-danger">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Conducteur</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                {{ form_widget(form.conducteur, {'id':'selectionConducteur', 'attr':
+                                {'class':'form-control','data-plugin':'select2', 'data-placeholder':'Conducteur','data-allow-clear':'false'}}) }}
+                            </div>
+                            <div class="col-md-12">
+                                <table id="detailsconducteur" class="table table-hover">
+                                    {# <tr>
+                                         <td>Place</td>
+                                         <td>4</td>
+                                     </tr>
+                                     <tr>
+                                         <td>Poids</td>
+                                         <td>1.5T</td>
+                                     </tr>#}
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Description</h3>
+                        </div>
+                        <div class="panel-body" style="padding: 0px !important;">
+                           {{ form_widget(form.description, {'attr':
+                                {'class':'form-control full','rows':'7', 'placeholder':'Description...','data-provide':'markdown',
+                          'data-hidden-buttons':"cmdBold", 'data-iconlibrary':'fa'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="panel panel-bordered panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Trajet</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-6">
+                                <label class="control-label padding-left-10" for="lieuDepart">Lieu depart</label>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        {{ form_widget(form.trajet.lieuDepart, {'attr':
+                                            {'class':'form-control padding-left-10','placeholder':'ex : Abidjan','autocomplete':'off'},
+                                            'id':'lieuDepart'}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-sm-6">
+                            <label class="control-label padding-left-10" for="lieuArrivee">Lieu arrivée</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    {{ form_widget(form.trajet.lieuArrivee, {'attr':
+                                            {'class':'form-control padding-left-10','placeholder':'ex : Korhogo','autocomplete':'off'},
+                                            'id':'lieuArrivee'}) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group form-material col-xs-12">
+            {{ form_widget(form._token) }}
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ path('utilisation_index') }}">Liste utilisations</a>
+
+                <button type="submit"
+                        class="btn btn-primary  margin-horizontal-20">Enregistrer
+                </button>
+            </div>
+        </div>
+    </div>
+                
+    {{ form_end(form, {'render_rest': false}) }}
+</div>
+{% endblock %}
+
+{% block pluginsjs %}
+    <script src="{{ asset('global/vendor/bootstrap-markdown/bootstrap-markdown.js') }}"></script>
+    <script src="{{ asset('global/vendor/marked/marked.js') }}"></script>
+    <script src="{{ asset('global/vendor/to-markdown/to-markdown.js') }}"></script>
+    <script src="{{ asset('global/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('global/vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
+{% endblock %}
+
+{% block scriptsjs %}
+    <script src="{{ asset('global/js/components/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('global/js/components/select2.js') }}"></script>
+    <script src="{{ asset('global/js/components/jquery-placeholder.js') }}"></script>
+
+    <script src="{{ asset('custom/js/datedropper.js') }}"></script>
+    <script src="{{ asset('custom/js/timedropper.js') }}"></script>
+    <script>
+        $( ".mytime" ).timeDropper({
+            format:'HH:mm',
+            setCurrentTime:false
+        });
+        $( ".mydate" ).dateDropper({
+            lang: 'fr',
+            animate:true,
+            format:'d-m-Y'
+        });
+    </script>
+{% endblock %}

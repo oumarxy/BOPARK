@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/examples/css/tables/datatable.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+
+    {% include ":sections_app:menu_etats.html.twig" %}
+    <div class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="{{ path('utilisation_new') }}"
+                   class="btn btn-floating btn-info btn-sm waves-effect waves-float waves-light">
+                    <i class="icon md-plus" style="color:white;font:bold;"></i>
+                </a>
+            </div>
+            <h3 class="panel-title">Utilisation</h3>
+        </header>
+        <div class="panel-body">
+            <table class="table table-hover dataTable table-striped width-full" data-plugin="dataTable">
+                <thead>
+                <tr>
+                    <th>Actions</th>
+                    <th>Vehicule</th>
+                    <th>Conducteur</th>
+                    <th>Client</th>
+                    <th>Lieu départ</th>
+                    <th>Lieu Arrivée</th>
+                    <th>Date debut</th>
+                    <th>Date fin</th>
+                    <th>Date fin reel</th>
+                    <th>Etat</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Actions</th>
+                    <th>Vehicule</th>
+                    <th>Conducteur</th>
+                    <th>Client</th>
+                    <th>Lieu départ</th>
+                    <th>Lieu Arrivée</th>
+                    <th>Date debut</th>
+                    <th>Date fin</th>
+                    <th>Date fin reel</th>
+                    <th>Etat</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for utilisation in utilisations %}
+                    <tr>
+                        <td>
+                            {#
+                                <a href="{{ path('utilisation_edit', { 'id': utilisation.id, 'type':'etat' }) }}">
+                                    <i class="icon md-flash padding-3 bg-purple-600 white icon-circle" aria-hidden="true"></i>
+                                </a>
+                            #}
+                            <a href="{{ path('utilisation_edit', { 'id': utilisation.id, 'type':'simple' }) }}">
+                                <i class="icon md-edit bg-green-600 white icon-circle" aria-hidden="true"></i>
+                            </a>
+                            <a href="{{ path('utilisation_show', { 'id': utilisation.id }) }}">
+                                <i class="icon md-eye bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                        <td>{{ utilisation.vehicule }}</td>
+                        <td>{{ utilisation.conducteur }}</td>
+                        <td>{{ utilisation.client }}</td>
+                        <td>{{ utilisation.trajet.lieuDepart }}</td>
+                        <td>{{ utilisation.trajet.lieuArrivee }}</td>
+                        <td>{% if utilisation.dateDebut %}{{ utilisation.dateDebut|date('m-d-Y') }} {{ utilisation.heureDebut|date('H:i') }}  {% endif %}</td>
+                        <td>{% if utilisation.dateFin %}{{ utilisation.dateFin|date('m-d-Y') }} {{ utilisation.heureFin|date('H:i') }} {% endif %}</td>
+                        <td>{% if utilisation.dateFinReel %}{{ utilisation.dateFinReel|date('m-d-Y') }} {{ utilisation.heureFinReel|date('H:i') }} {% endif %}</td>
+                        <td>
+                            {% if utilisation.etat == "En attente" %}
+                                <span class="label label-info">
+                            {% endif %}
+                                {% if utilisation.etat == "Terminé" %}
+                                <span class="label label-default">
+                            {% endif %}
+                            {% if utilisation.etat == "Annulé" %}
+                                <span class="label label-danger">
+                            {% endif %}
+                            {% if utilisation.etat == "En cours" %}
+                                <span class="label label-success">
+                            {% endif %}
+                                    {{ utilisation.etat }}
+                                </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{# block javascripts %}
+
+{% endblock #}
+
+{% block pluginsjs %}
+    <script src="{{ asset('global/vendor/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>
+
+{% endblock %}
+
+{% block scriptsjs %}
+    <script src="{{ asset('global/js/components/datatables.js') }}"></script>
+    <script src="{{ asset('assets/examples/js/tables/datatable.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel">
+                <figure class="overlay overlay-hover">
+                    <img class="overlay-figure" src="../../../global/photos/placeholder.png" alt="...">
+                    <figcaption class="overlay-bottom overlay-panel overlay-background overlay-slide-top center">
+                        <h4>{{ conducteur.prenoms }}  {{ conducteur.nom }}</h4>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="col-md-9 panel" style="padding: 25px;">
+            <div class="col-md-6">
+                <table class="col-md-12 table table-hover">
+                    <thead>
+                    <tr style="border-bottom: 2px solid gainsboro;">
+                        <td colspan="2"><h4>Informations</h4></td>
+                    </tr>
+                    </thead>
+
+                    <tr style="padding: 35px">
+                        <th>Nom</th>
+                        <td>{{ conducteur.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prénoms</th>
+                        <td>{{ conducteur.prenoms }}</td>
+                    </tr>
+                    <tr>
+                        <th>Permis</th>
+                        <td>{{ conducteur.permis }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fonction</th>
+                        <td>{{ conducteur.fonction }}</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="col-md-6">
+                <table class="col-md-12 table table-hover">
+                    <thead>
+                    <tr style="border-bottom: 2px solid gainsboro;">
+                        <td colspan="2"><h4 style="color:white">+</h4></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <th>Date de naissance</th>
+                        <td>{% if conducteur.dateNaissance %}{{ conducteur.dateNaissance|date('d-m-Y') }}{% endif %}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Lieu de naissance</th>
+                        <td>{{ conducteur.lieuDeNaissance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ conducteur.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contacts</th>
+                        <td>{{ conducteur.contact }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clearfix hidden-xs"></div>
+
+
+        </div>
+        <div class="form-group form-material col-xs-12">
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ path('conducteur_index') }}">Liste conducteurs</a>
+                <a class="btn btn-default" href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}">Modifier</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

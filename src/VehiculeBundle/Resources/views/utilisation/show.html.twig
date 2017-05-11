@@ -1,0 +1,308 @@
+{% extends 'base.html.twig' %}
+
+{% block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/multi-select/multi-select.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/jt-timepicker/jquery-timepicker.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('custom/css/timedropper.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/flag-icon-css/flag-icon.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/examples/css/forms/advanced.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-markdown/bootstrap-markdown.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <div class="row" style="padding: 0px">
+        <div class="col-md-3" style="padding: 0px">
+            <div class="widget-header cover overlay">
+                <img class="cover-image height-200" src="../assets//examples/images/dashboard-header.jpg" alt="...">
+                <div class="overlay-panel vertical-align overlay-background">
+                    <div class="vertical-align-middle">
+                        <a class="avatar avatar-100 pull-left margin-right-10" href="javascript:void(0)">
+                            <img src="../../global/portraits/5.jpg" alt="">
+                        </a>
+                        <div class="pull-left">
+                            <div class="font-size-13">{{ utilisation.conducteur.nom }} {{ utilisation.conducteur.prenoms }}</div>
+                            <p class="margin-bottom-20 text-nowrap">
+                                <span class="text-break">{{ utilisation.conducteur.email }}</span><br/>
+                                <span class="text-break">{{ utilisation.conducteur.contact }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 panel" style="padding: 25px;">
+            <div class="col-md-6">
+                <table class="col-md-12 table table-hover">
+                    <thead>
+                    <tr style="border-bottom: 2px solid gainsboro;">
+                        <td colspan="2"><h4>Véhicule</h4></td>
+                    </tr>
+                    </thead>
+
+                    <tr style="padding: 35px">
+                        <th>Immatriculation</th>
+                        <td>{{ utilisation.vehicule.immatriculation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Catégorie</th>
+                        <td>{{ utilisation.vehicule.categorie }}</td>
+                    </tr>
+                    <tr>
+                        <th>Marque</th>
+                        <td>{{ utilisation.vehicule.marque }}</td>
+                    </tr>
+                    <tr>
+                        <th>Place</th>
+                        <td>{{ utilisation.vehicule.place }}</td>
+                    </tr>
+                    <tr>
+                        <th>Carburant départ</th>
+                        <td>{{ utilisation.etatCarburantDepart }}</td>
+                    </tr>
+                    <tr>
+                        <th>Carburant arrivée</th>
+                        <td>{{ utilisation.etatCarburantArrivee }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kilométrage départ</th>
+                        <td>{{ utilisation.kilometrageDepart }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kilométrage arrivée</th>
+                        <td>{{ utilisation.kilometrageArrivee }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="col-md-12 table table-hover">
+                    <thead>
+                    <tr style="border-bottom: 2px solid gainsboro;">
+                        <td colspan="2"><h4>Info trajet</h4></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <th>Date départ</th>
+                        <td>{% if utilisation.dateDebut %}{{ utilisation.dateDebut|date('d-m-Y') }} {{ utilisation.heureDebut|date('H:i') }} {% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Date arrivée</th>
+                        <td>{% if utilisation.dateFin %}{{ utilisation.dateFin|date('d-m-Y') }} {{ utilisation.heureFin|date('H:i') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Date fin réel</th>
+                        <td>{% if utilisation.dateFinReel %}{{ utilisation.dateFinReel|date('d-m-Y') }} {{ utilisation.heureFinReel|date('H:i') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Lieu départ</th>
+
+                        <td>{{ utilisation.trajet.lieuDepart }} </td>
+                    </tr>
+                    <tr>
+                        <th>Lieu arrivée</th>
+                        <td>{{ utilisation.trajet.lieuArrivee }} </td>
+                    </tr>
+                    <tr>
+                        <th>Etat</th>
+                        <td>
+                            {% if utilisation.etat == "En attente" %}
+                            <span class="label label-info">
+                            {% endif %}
+                                {% if utilisation.etat == "Terminé" %}
+                                <span class="label label-default">
+                            {% endif %}
+                                    {% if utilisation.etat == "Annulé" %}
+                                    <span class="label label-danger">
+                            {% endif %}
+                                        {% if utilisation.etat == "En cours" %}
+                                        <span class="label label-success">
+                            {% endif %}
+                                            {{ utilisation.etat }}
+                                </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ utilisation.description }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="form-group form-material col-sm-12">
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ path('utilisation_index') }}">Liste utilisations</a>
+                <a class="btn btn-info" data-target="#modalEtat" data-toggle="modal">Mettre à jour</a>
+                <a class="btn btn-default" href="{{ path('utilisation_edit', { 'id': utilisation.id }) }}">Modifier</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        {{ form_start(edit_form, {'action': path('utilisation_edit', { 'id': utilisation.id })}) }}
+            <div>
+                <div class="col-lg-4 col-md-6">
+                    <!-- Modal -->
+                    <div class="modal fade modal-fill-in" id="modalEtat" aria-hidden="false"
+                         aria-labelledby="modalConducteur"
+                         role="dialog" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">× </span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalEditModalTitle">Mise à jour</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-sm-12" style="padding: 0px">
+                                        <label class="control-label padding-left-10"
+                                               for="inputEtat">Sélectionner l'état de l'utilisation</label>
+                                        {{ form_widget(edit_form.etat, {'attr':
+                                            {'class':'form-control'},
+                                            'id':'inputEtat'}) }}
+
+                                    </div>
+                                    <div class="row" style="padding: 0px; margin-bottom: 5px">
+                                        <div class="col-sm-12 margin-vertical-10 margin-horizontal-10">Date retour
+                                            réel
+                                        </div>
+                                        <br/>
+                                        <div class="input-daterange-wrap col-sm-12" style="margin-bottom: 5px">
+                                            <div class="input-daterange">
+                                                <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="icon md-calendar" aria-hidden="true"></i>
+                                            </span>
+                                                    {{ form_widget(edit_form.dateFinReel, {'attr':
+                                                        {'class':'form-control mydate dateReel','type':'text'}}) }}
+                                                </div>
+                                                <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="icon md-time" aria-hidden="true"></i>
+                                            </span>
+                                                    {{ form_widget(edit_form.heureFinReel, {'attr':
+                                                        {'class':'form-control mytime heureReel','type':'text'}}) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label padding-left-10"
+                                                   for="inputKilometrageDepart">Kil. Départ</label>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ form_widget(edit_form.kilometrageDepart, {'attr':
+                                                        {'class':'form-control padding-left-10','placeholder':'ex : 15000','min':'0','autocomplete':'off'},
+                                                        'id':'inputKilometrageDepart'}) }}
+                                                    <span class="input-group-addon"
+                                                          style="border: 1px solid gainsboro">Km</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label padding-left-10"
+                                                   for="inputKilometrageArrivee">Kil. Arrivée</label>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ form_widget(edit_form.kilometrageArrivee, {'attr':
+                                                        {'class':'form-control padding-left-10','placeholder':'ex : 17800','min':'0','autocomplete':'off'},
+                                                        'id':'inputKilometrageArrivee'}) }}
+                                                    <span class="input-group-addon"
+                                                          style="border: 1px solid gainsboro">Km</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-vertical-10">
+                                        <div class="col-sm-6">
+                                            <label class="control-label padding-left-10"
+                                                   for="inputEtatCarburantDepart">Etat du carburant départ</label>
+                                            {{ form_widget(edit_form.etatCarburantDepart, {'attr':
+                                                {'class':'form-control'},
+                                                'id':'inputEtatCarburantDepart'}) }}
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label padding-left-10"
+                                                   for="inputEtatCarburantArrivee">Etat du carburant retour</label>
+                                            {{ form_widget(edit_form.etatCarburantArrivee, {'attr':
+                                                {'class':'form-control'},
+                                                'id':'inputEtatCarburantArrivee'}) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row pull-right padding-horizontal-30">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">Fermer</span>
+                                    </button>
+                                    <button class="btn btn-primary" data-target="#modalConfirmation" data-toggle="modal"
+                                            type="button">Modifier
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade modal-slide-from-bottom" id="modalConfirmation"
+                 aria-hidden="true" aria-labelledby="confirmationModalTitle" role="dialog"
+                 tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title">Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Voulez vous vraiment appliquer cette modification ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            {{ form_widget(edit_form._token) }}
+                            <button type="button" class="btn btn-default btn-pure margin-0" data-dismiss="modal">Fermer
+                            </button>
+                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div style="display: none">{{ form_rest(edit_form) }}</div>
+        {{ form_end(edit_form) }}
+    </div>
+
+{% endblock %}
+
+{% block pluginsjs %}
+    <script src="{{ asset('global/vendor/bootstrap-markdown/bootstrap-markdown.js') }}"></script>
+    <script src="{{ asset('global/vendor/marked/marked.js') }}"></script>
+    <script src="{{ asset('global/vendor/to-markdown/to-markdown.js') }}"></script>
+    <script src="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('global/vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
+    <script src="{{ asset('global/vendor/jt-timepicker/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ asset('global/vendor/datepair-js/datepair.min.js') }}"></script>
+{% endblock %}
+
+{% block scriptsjs %}
+    <script src="{{ asset('global/js/components/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('global/js/components/jquery-placeholder.js') }}"></script>
+    <script src="{{ asset('global/js/components/jt-timepicker.js') }}"></script>
+    <script src="{{ asset('global/js/components/datepair-js.js') }}"></script>
+
+    <script src="{{ asset('custom/js/datedropper.js') }}"></script>
+    <script src="{{ asset('custom/js/timedropper.js') }}"></script>
+    <script>
+        $(".mytime").timeDropper({
+            format: 'HH:mm',
+            setCurrentTime: false
+        });
+        $(".mydate").dateDropper({
+            lang: 'fr',
+            animate: true,
+            format: 'd-m-Y'
+        });
+    </script>
+{% endblock %}

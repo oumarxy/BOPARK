@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{# block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('assets/examples/css/advanced/masonry.css') }}"/>
+{% endblock #}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel">
+                <figure class="overlay overlay-hover">
+                    <img class="overlay-figure" src="../../../global/photos/placeholder.png" alt="...">
+                    <figcaption class="overlay-bottom overlay-panel overlay-background overlay-slide-top">
+                        <h4>Overlay Bottom</h4>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="col-md-9 panel" style="padding: 25px;">
+            <div class="col-md-6">
+                <table class="col-md-12 table table-hover">
+                    <thead>
+                    <tr style="border-bottom: 2px solid gainsboro;">
+                        <td colspan="2"><h4>Infos. Générales</h4></td>
+                    </tr>
+                    </thead>
+
+                    <tr style="padding: 35px">
+                        <th>Immatriculation</th>
+                        <td>{{ vehicule.immatriculation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Catégorie</th>
+                        <td>{{ vehicule.categorie }}</td>
+                    </tr>
+                    <tr>
+                        <th>Marque</th>
+                        <td>{{ vehicule.marque }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numero carte grise</th>
+                        <td>{{ vehicule.numeroCarteGrise }}</td>
+                    </tr>
+                    <tr>
+                        <th>Numero chassis</th>
+                        <td>{{ vehicule.numeroChassis }}</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="col-md-6">
+                <table class="col-md-12 table table-hover">
+                    <thead>
+                    <tr style="border-bottom: 2px solid gainsboro;">
+                        <td colspan="2"><h4>Infos. Supplémentaires</h4></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <th>Date de mise en circulation</th>
+                        <td>{% if vehicule.dateMiseEnCirculation %}{{ vehicule.dateMiseEnCirculation|date('d-m-Y') }}{% endif %}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Poids</th>
+                        <td>{{ vehicule.poids }}</td>
+                    </tr>
+                    <tr>
+                        <th>Place</th>
+                        <td>{{ vehicule.place }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kilométrage</th>
+                        <td>{{ vehicule.kilometrage }}</td>
+                    </tr>
+                    <tr>
+                        <th>Couleur</th>
+                        <td style="background-color: {{ vehicule.couleur }}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clearfix hidden-xs"></div>
+
+
+        </div>
+        <div class="form-group form-material col-xs-12">
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ path('vehicule_index') }}">Liste véhicules</a>
+                <a class="btn btn-default" href="{{ path('vehicule_edit', { 'id': vehicule.id }) }}">Modifier</a>
+            </div>
+        </div>
+    </div>
+
+    <!--ul>
+        <li>
+            {# form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) #}
+        </li>
+    </ul-->
+{% endblock %}
+
+
+{# block pluginsjs %}
+    <script src="{{ asset('global/vendor/masonry/masonry.pkgd.min.js') }}"></script>
+{% endblock #}
+
+{# block scriptsjs %}
+    <script src="{{ asset('global/js/components/masonry.js') }}"></script>
+{% endblock #}

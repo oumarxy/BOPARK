@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/ascolorpicker/asColorPicker.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/select2/select2.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/icheck/icheck.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/multi-select/multi-select.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/examples/css/forms/advanced.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="panel-body container-fluid">
+        {{  form_start(edit_form) }}
+        <div class="row" style="padding: 0 auto !important;">
+            <div class="col-sm-6 panel padding-20 margin-horizontal-35">
+                <h4 class="title">Infos Générales</h4>
+                <div class="form-group form-material row">
+                    <div class="col-sm-6">
+                        {{ form_widget(edit_form.categorie, {'attr':
+                            {'class':'form-control','data-plugin':'select2', 'data-placeholder':'Catégorie','data-allow-clear':'true'}}) }}
+                    </div>
+                    <div class="col-sm-6">
+                        {{ form_widget(edit_form.marque, {'attr':
+                            {'class':'form-control','data-plugin':'select2', 'data-placeholder':'Marque','data-allow-clear':'true'}}) }}
+                    </div>
+                </div>
+
+                <div class="form-group form-material row">
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10"
+                               for="inputImmatriculation">Immatriculation</label>
+                        {{ form_widget(edit_form.immatriculation, {'attr':
+                            {'class':'form-control padding-left-10','placeholder':'ex : 7LS9...','autocomplete':'off'},
+                            'id':'inputImmatriculation'}) }}
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10" for="inputChassis">N° Chassis</label>
+                        {{ form_widget(edit_form.numeroChassis, {'attr':
+                            {'class':'form-control padding-left-10','placeholder':'ex : 9879...','autocomplete':'off'},
+                            'id':'inputChassis'}) }}
+                    </div>
+
+                </div>
+
+                <div class="form-group form-material row">
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10" for="inputCarteGrise">N° Carte Grise</label>
+                        {{ form_widget(edit_form.numeroCarteGrise, {'attr':
+                            {'class':'form-control padding-left-10','placeholder':'ex : 9879...','autocomplete':'off'},
+                            'id':'inputCarteGrise'}) }}
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10" for=""></label>
+                        {{ form_widget(edit_form.typeacquisition, {'attr':
+                            {'class':'form-control','data-plugin':'select2', 'data-placeholder':'Mode d\'acquisition','data-allow-clear':'true'}}) }}
+                    </div>
+                </div>
+                <!-- End Example Basic Form -->
+            </div>
+            <div class="col-sm-5 panel padding-20 ">
+                <h4 class="title">Infos Supplémentaires</h4>
+                <div class="form-group form-material row">
+                    <div class="col-sm-6">
+                        {{ form_widget(edit_form.couleur, {'attr':
+                            {'class':'asColorpicker padding-left-10 form-control','data-plugin':'asColorPicker',
+                                'data-mode':'simple','placeholder':'Couleur','maxlength':'7','min':'7','READONLY':''},
+                            'id':'inputCouleur'}) }}
+                    </div>
+
+                </div>
+
+                <div class="form-group form-material row" style="margin-bottom: 0px;">
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10"
+                               for="inputKilometrage">Kilométrage</label>
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form_widget(edit_form.kilometrage, {'attr':
+                                    {'class':'form-control padding-left-10','placeholder':'ex : 15000','min':'0','autocomplete':'off'},
+                                    'id':'inputKilometrage'}) }}
+                                <!--input type="text" id="inputKilometrage" class="form-control padding-left-10"
+                                       placeholder="ex : 15000" autocomplete="off"/-->
+                                <span class="input-group-addon" style="border: 1px solid gainsboro">Km</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10" for="inputDateMiseEnCirculation">Date de mise
+                            en circulation</label>
+                        <div class="input-group">
+                            {{ form_widget(edit_form.dateMiseEnCirculation, {'attr':
+                                {'class':'form-control padding-left-10  mydate','type': 'text'},
+                                'id':'inputDateMiseEnCirculation'}) }}
+                            <span class="input-group-addon" style="border: 1px solid gainsboro">
+                              <i class="icon md-calendar" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group form-material row">
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10" for="inputPoids">Poids</label>
+                        {{ form_widget(edit_form.poids, {'attr':
+                            {'class':'form-control padding-left-10','placeholder':'ex : 1T','autocomplete':'off'},
+                            'id':'inputPoids'}) }}
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="control-label padding-left-10" for="inputPlace">Place</label>
+                        {{ form_widget(edit_form.place, {'attr':
+                            {'class':'form-control padding-left-10','placeholder':'ex : 4','autocomplete':'off'},
+                            'id':'inputPlace'}) }}
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix hidden-xs"></div>
+
+            <div class="form-group form-material col-xs-12">
+                {{ form_widget(edit_form._token) }}
+                <div class="pull-right">
+                    <a class="btn btn-success" href="{{ path('vehicule_index') }}">Liste véhicules</a>
+                    <button type="submit"class="btn btn-primary  margin-horizontal-20">
+                        Valider
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{  form_end(edit_form, {"render_rest":false}) }}
+
+    </div>
+
+
+   
+{% endblock %}
+
+{% block pluginsjs %}
+    <script src="{{ asset('global/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('global/vendor/ascolor/jquery-asColor.min.js') }}"></script>
+    <script src="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('global/vendor/ascolorpicker/jquery-asColorPicker.min.js') }}"></script>
+    <script src="{{ asset('global/vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
+{% endblock %}
+
+{% block scriptsjs %}
+    <script src="{{ asset('global/js/components/ascolorpicker.js') }}"></script>
+    <script src="{{ asset('global/js/components/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('global/js/components/select2.js') }}"></script>
+    <script src="{{ asset('global/js/components/jquery-placeholder.js') }}"></script>
+    <script src="{{ asset('custom/js/datedropper.js') }}"></script>
+    <script>
+        $( ".mydate" ).dateDropper({
+            lang: 'fr',
+            animate:true,
+            format:'d-m-Y'
+        });
+    </script>
+{% endblock %}

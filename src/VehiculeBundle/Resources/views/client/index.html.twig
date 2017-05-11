@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block pluginscss %}
+    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/examples/css/tables/datatable.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="{{path('client_new')}}" class="btn btn-floating btn-info btn-sm waves-effect waves-float waves-light">
+                    <i class="icon md-plus" style="color:white;font:bold;" ></i>
+                </a>
+            </div>
+            <h3 class="panel-title">Clients</h3>
+        </header>
+        <div class="panel-body">
+            <table class="table table-hover dataTable table-striped width-full" data-plugin="dataTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Contact</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Contact</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td><a href="{{ path('client_show', { 'id': client.id }) }}">{{ client.id }}</a></td>
+                            <td>{{ client.nom }}</td>
+                            <td>{{ client.adresse }}</td>
+                            <td>{{ client.contact }}</td>
+                            <td>
+                                <a href="{{ path('client_show', { 'id': client.id }) }}">show</a>
+                                <a href="{{ path('client_edit', { 'id': client.id }) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{# block javascripts %}
+
+{% endblock #}
+
+{% block pluginsjs %}
+    <script src="{{ asset('global/vendor/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('global/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>
+{% endblock %}
+
+{% block scriptsjs %}
+    <script src="{{ asset('global/js/components/datatables.js') }}"></script>
+    <script src="{{ asset('assets/examples/js/tables/datatable.js') }}"></script>
+{% endblock %}

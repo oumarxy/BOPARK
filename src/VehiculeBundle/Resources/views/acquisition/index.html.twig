@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Acquisition list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Dateacquisition</th>
+                <th>Montantacquisition</th>
+                <th>Datefinlocation</th>
+                <th>Datefinleasing</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for acquisition in acquisitions %}
+            <tr>
+                <td><a href="{{ path('acquisition_show', { 'id': acquisition.id }) }}">{{ acquisition.id }}</a></td>
+                <td>{{ acquisition.libelle }}</td>
+                <td>{% if acquisition.dateAcquisition %}{{ acquisition.dateAcquisition|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if acquisition.montantAcquisition %}{{ acquisition.montantAcquisition|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if acquisition.dateFinLocation %}{{ acquisition.dateFinLocation|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if acquisition.dateFinLeasing %}{{ acquisition.dateFinLeasing|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('acquisition_show', { 'id': acquisition.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('acquisition_edit', { 'id': acquisition.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('acquisition_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
