@@ -20,21 +20,25 @@ class VehiculeController extends Controller {
     /**
      * Lists all Vehicule entities.
      *
-     * @Route("/", name="vehicule_index")
+     * @Route("/{statut}", name="vehicule_index", defaults={"statut"="tout"})
      * @Method("GET")
      */
-    public function indexAction() {
+    public function indexAction($statut) {
         $em = $this->getDoctrine()->getManager();
-
-        $vehicules = $em->getRepository('VehiculeBundle:Vehicule')->findAll();
-
+        if ($statut == "disponible") {
+            $vehicules = $em->getRepository('VehiculeBundle:Vehicule')->findBy(array("disponibilite" => "Disponible"));
+        } elseif ($statut == "indisponible") {
+            $vehicules = $em->getRepository('VehiculeBundle:Vehicule')->findBy(array("disponibilite" => "Indisponible"));
+        } else {
+            $vehicules = $em->getRepository('VehiculeBundle:Vehicule')->findAll();
+        }
         $total = $this->getTotal();
 
         return $this->render('@Vehicule/vehicule/index.html.twig', array(
                     'vehicules' => $vehicules,
-            'total_tout'=> $total["tout"],
-            'total_disponible'=> $total["disponible"],
-            'total_indisponible'=> $total["indisponible"],
+                    'total_tout' => $total["tout"],
+                    'total_disponible' => $total["disponible"],
+                    'total_indisponible' => $total["indisponible"],
         ));
     }
 
@@ -48,21 +52,22 @@ class VehiculeController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $utilisation = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat'=>'En cours'));
+        $utilisation = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'En cours'));
 
-        foreach($utilisation as  $u){
-            if($u->getVehicule()->getId() == $vehicule->getId()){
+        foreach ($utilisation as $u) {
+            if ($u->getVehicule()->getId() == $vehicule->getId()) {
                 $id = $u->getId();
             }
         }
 
+        $this->get('session')->getFlashBag()->add('info', 'Ce véhicule est en cours d\'utilisation.');
         return $this->redirectToRoute('utilisation_show', array('id' => $id));
     }
 
     /**
      * Creates a new Vehicule entity.
      *
-     * @Route("/new", name="vehicule_new")
+     * @Route("/new/v", name="vehicule_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
@@ -73,9 +78,16 @@ class VehiculeController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $vehicule->setDisponibilite("Disponible");
+
+            $file = $vehicule->getPath();
+            $folder = 'vehicules';
+            $fileName = $this->get('app.my_uploader')->upload($file, $folder);
+            $vehicule->setPath($fileName);
+
             $em->persist($vehicule);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('success', 'Nouveau véhicule ajouté.');
             return $this->redirectToRoute('vehicule_show', array('id' => $vehicule->getId()));
         }
 
@@ -88,7 +100,7 @@ class VehiculeController extends Controller {
     /**
      * Finds and displays a Vehicule entity.
      *
-     * @Route("/{id}", name="vehicule_show")
+     * @Route("/s/{id}", name="vehicule_show")
      * @Method("GET")
      */
     public function showAction(Vehicule $vehicule) {
@@ -125,16 +137,32 @@ class VehiculeController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Vehicule $vehicule) {
+
+        $oldfile = $vehicule->getPath();
         $deleteForm = $this->createDeleteForm($vehicule);
         $editForm = $this->createForm('VehiculeBundle\Form\VehiculeType', $vehicule);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $file = $vehicule->getPath();
+            if (is_file($file)) {
+                $folder = 'vehicules';
+                $fileName = $this->get('app.my_uploader')->upload($file, $folder);
+                $vehicule->setPath($fileName);
+                if ($oldfile->getFilename() != 'default_vehicule.png') {
+                    unlink($oldfile);
+                }
+            } else {
+                $vehicule->setPath($oldfile->getFilename());
+            }
+
             $em->persist($vehicule);
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('success', 'Modification effectuée avec succès');
+            //var_dump($this->get('session')->getFlashBag());die;
             return $this->redirectToRoute('vehicule_show', array('id' => $vehicule->getId()));
         }
         if ($editForm->isSubmitted() && !$editForm->isValid()) {
@@ -181,17 +209,17 @@ class VehiculeController extends Controller {
         ;
     }
 
-    private function getTotal(){
+    private function getTotal() {
         $em = $this->getDoctrine()->getManager();
 
         $total_tout = $em->getRepository('VehiculeBundle:Vehicule')->findAll();
-        $total_disponible = $em->getRepository('VehiculeBundle:Vehicule')->findBy(array('disponibilite'=>'Disponible'));
-        $total_indisponible = $em->getRepository('VehiculeBundle:Vehicule')->findBy(array('disponibilite'=>'Indisponible'));
+        $total_disponible = $em->getRepository('VehiculeBundle:Vehicule')->findBy(array('disponibilite' => 'Disponible'));
+        $total_indisponible = $em->getRepository('VehiculeBundle:Vehicule')->findBy(array('disponibilite' => 'Indisponible'));
 
         $total = array(
-            "tout"=>count($total_tout),
-            "disponible"=>count($total_disponible),
-            "indisponible"=>count($total_indisponible),
+            "tout" => count($total_tout),
+            "disponible" => count($total_disponible),
+            "indisponible" => count($total_indisponible),
         );
 
         return $total;

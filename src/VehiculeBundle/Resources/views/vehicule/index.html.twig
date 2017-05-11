@@ -1,22 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block pluginscss %}
-    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/examples/css/tables/datatable.css') }}"/>
-{% endblock %}
 
 {% block body %}
     {% include("sections_app/stats_disponibilite.html.twig") %}
     <div class="panel">
         <header class="panel-heading">
             <div class="panel-actions">
-                 <a href="{{path('vehicule_new')}}" class="btn btn-floating btn-info btn-sm waves-effect waves-float waves-light">
+                <a href="{{path('vehicule_new')}}" class="btn btn-floating btn-info btn-sm waves-effect waves-float waves-light">
                     <i class="icon md-plus" style="color:white;font:bold;" ></i>
                 </a>
+                <a href="{{path('vehicule_index')}}" class="btn btn-floating btn-success btn-sm waves-effect waves-float waves-light">
+                    <i class="icon md-refresh" style="color:white;font:bold;" ></i>
+                </a>
             </div>
-            <h3 class="panel-title">Vehicules</h3>
+            <h3 class="panel-title">Véhicules</h3>
         </header>
         <div class="panel-body">
             <table class="table table-hover dataTable table-striped width-full" data-plugin="dataTable">
@@ -24,6 +21,7 @@
                     <tr>
                         <th>Actions</th>
                         <th>Immatriculation</th>
+                        <th>Marque</th>
                         <th>Carte grise</th>
                         <th>Mise en circulation</th>
                         <th>Numéro chassis</th>
@@ -36,6 +34,7 @@
                    <tr>
                        <th>Actions</th>
                        <th>Immatriculation</th>
+                       <th>Marque</th>
                         <th>Carte grise</th>
                         <th>Mise en circulation</th>
                         <th>Numéro chassis</th>
@@ -56,6 +55,7 @@
                                 </a>
                             </td>
                             <td>{{ vehicule.immatriculation }}</td>
+                            <td>{{ vehicule.marque }}</td>
                             <td>{{ vehicule.numeroCarteGrise }}</td>
                             <td>{% if vehicule.dateMiseEnCirculation %}{{ vehicule.dateMiseEnCirculation|date('Y-m-d') }}{% endif %}</td>
                             <td>{{ vehicule.numeroChassis }}</td>
@@ -63,14 +63,10 @@
                             <td>{{ vehicule.kilometrage }}</td>
                             <td>
                                 {% if vehicule.disponibilite == "Indisponible" %}
-                                    <span class="label label-danger">
-                                            <a href="{{ path("vehicule_recherche_utilisation", {'id': vehicule.id}) }}">{{ vehicule.disponibilite }}</a>
-                                    </span>
+                                            <a href="{{ path("vehicule_recherche_utilisation", {'id': vehicule.id}) }}"><i class="icon md-car bg-red-600 white padding-5" aria-hidden="true"></i> </a>
                                 {% endif %}
                                 {% if vehicule.disponibilite == "Disponible" %}
-                                    <span class="label label-success">
-                                        <a href="{{ path("utilisation_vehicule_attente", {'id': vehicule.id}) }}">{{ vehicule.disponibilite }}</a>
-                                    </span>
+                                        <a href="{{ path("utilisation_vehicule_attente", {'id': vehicule.id}) }}"><i class="icon md-car bg-green-600 white padding-5" ></i> </a>
                                 {% endif %}
                             </td>
                         </tr>
@@ -86,16 +82,3 @@
 {# block javascripts %}
 
 {% endblock #}
-
-{% block pluginsjs %}
-    <script src="{{ asset('global/vendor/datatables/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>
-{% endblock %}
-
-{% block scriptsjs %}
-    <script src="{{ asset('global/js/components/datatables.js') }}"></script>
-    <script src="{{ asset('assets/examples/js/tables/datatable.js') }}"></script>
-{% endblock %}

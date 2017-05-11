@@ -8,106 +8,46 @@
         <meta name="author" content="">
         <title>{% block title %}Welcome!{% endblock %}</title>
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-    <link rel="apple-touch-icon" href="{{asset('assets/images/apple-touch-icon.png') }}" />
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{asset('global/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{asset('global/css/bootstrap-extend.min.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/site.min.css') }}">
+        <link rel="apple-touch-icon" href="{{asset('assets/images/apple-touch-icon.png') }}" />
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="{{asset('global/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{asset('global/css/bootstrap-extend.min.css') }}">
+        <link rel="stylesheet" href="{{asset('assets/css/site.min.css') }}">
     {% block stylesheets %}{% endblock %}
 
     <!-- Plugins -->
-    {% block pluginscss %}{% endblock %}
-    <link rel="stylesheet" href="{{asset('global/vendor/waves/waves.css') }}">
-    <link rel="stylesheet" href="{{asset('global/fonts/material-design/material-design.min.css') }}">
-    <link rel="stylesheet" href="{{asset('global/fonts/brand-icons/brand-icons.min.css') }}">
+{% block pluginscss %}{% endblock %}
+<link rel="stylesheet" href="{{asset('global/vendor/waves/waves.css') }}">
+<link rel="stylesheet" href="{{asset('global/fonts/material-design/material-design.min.css') }}">
+<link rel="stylesheet" href="{{asset('global/fonts/brand-icons/brand-icons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('custom/css/toastr.css') }}"/>
+<link rel="stylesheet" href="{{ asset('custom/css/mystyle.css') }}"/>
+<link rel="stylesheet" href="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}"/>
+<link rel="stylesheet" href="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.css') }}"/>
+<link rel="stylesheet" href="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.css') }}"/>
+<link rel="stylesheet" href="{{ asset('assets/examples/css/tables/datatable.css') }}"/>
 
-    <!-- Fonts -->
-
-    {% block fontscss %}{% endblock %}
-    <style type="text/css">
-        /* latin-ext */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 300;
-            src: local('Roboto Light'), local('Roboto-Light'), url(../../../web/global/fonts/Roboto/Pru33qjShpZSmG3z6VYwnRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-        }
-        /* latin */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 300;
-            src: local('Roboto Light'), local('Roboto-Light'), url(../../../web/global/fonts/Roboto/Hgo13k-tfSpn0qi1SFdUfVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-        }
-        /* latin-ext */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 400;
-            src: local('Roboto'), local('Roboto-Regular'), url(../../../web/global/fonts/Roboto/Fcx7Wwv8OzT71A3E1XOAjvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-        }
-        /* latin */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 400;
-            src: local('Roboto'), local('Roboto-Regular'), url(../../../web/global/fonts/Roboto/CWB0XYA8bzo0kSThX0UTuA.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-        }
-        /* latin-ext */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 500;
-            src: local('Roboto Medium'), local('Roboto-Medium'), url(../../../web/global/fonts/Roboto/oOeFwZNlrTefzLYmlVV1UBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-        }
-        /* latin */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 500;
-            src: local('Roboto Medium'), local('Roboto-Medium'), url(../../../web/global/fonts/Roboto/RxZJdnzeo3R5zSexge8UUVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-        }
-        /* latin-ext */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: italic;
-            font-weight: 300;
-            src: local('Roboto Light Italic'), local('Roboto-LightItalic'), url(../../../web/global/fonts/Roboto/7m8l7TlFO-S3VkhHuR0atyYE0-AqJ3nfInTTiDXDjU4.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-        }
-        /* latin */
-        @font-face {
-            font-family: 'Roboto';
-            font-style: italic;
-            font-weight: 300;
-            src: local('Roboto Light Italic'), local('Roboto-LightItalic'), url(../../../web/global/fonts/Roboto/7m8l7TlFO-S3VkhHuR0at44P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-        }
-        body {
-            font-family: 'Roboto', normal, sans-serif;
-        }
-    </style>
-    <!--[if lt IE 9]>
-      <script src="{{asset('global/vendor/html5shiv/html5shiv.min.js') }}"></script>
-      <![endif]-->
-    <!--[if lt IE 10]>
-      <script src="{{asset('global/vendor/media-match/media.match.min.js') }}"></script>
-      <script src="{{asset('global/vendor/respond/respond.min.js') }}"></script>
-      <![endif]-->
-    <!-- Scripts -->
-    <script src="{{asset('global/vendor/modernizr/modernizr.js') }}"></script>
-    <script src="{{asset('global/vendor/breakpoints/breakpoints.js') }}"></script>
-    <script>
-        Breakpoints();
-    </script>
+<link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
+<link rel="stylesheet" href="{{ asset('custom/css/timedropper.css') }}"/>
+<!-- Fonts -->
+{% block fontscss %}
+    <link rel="stylesheet" href="{{ asset('global/fonts/font-awesome/font-awesome.css') }}"/>
+{% endblock %}
+<!--[if lt IE 9]>
+  <script src="{{asset('global/vendor/html5shiv/html5shiv.min.js') }}"></script>
+  <![endif]-->
+<!--[if lt IE 10]>
+  <script src="{{asset('global/vendor/media-match/media.match.min.js') }}"></script>
+  <script src="{{asset('global/vendor/respond/respond.min.js') }}"></script>
+  <![endif]-->
+<!-- Scripts -->
+<script src="{{asset('global/vendor/modernizr/modernizr.js') }}"></script>
+<script src="{{asset('global/vendor/breakpoints/breakpoints.js') }}"></script>
+<script>
+    Breakpoints();
+</script>
 </head>
 <body>
 {% block root %}{% endblock %}
@@ -123,7 +63,8 @@
 
 
 <!-- bosoft -->
-<script src="{{asset('assets/js/add.js') }}"></script>
+<script src="{{ asset('custom/js/toastr.min.js') }}"></script>
+{{ include(":sections_app:flashMessages.html.twig") }}
 
 
 
@@ -132,7 +73,11 @@
 <script src="{{asset('global/vendor/switchery/switchery.min.js') }}"></script>
 <script src="{{asset('global/vendor/screenfull/screenfull.js') }}"></script>
 {% block pluginsjs %}{% endblock %}
-
+<script src="{{ asset('global/vendor/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
+<script src="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
+<script src="{{ asset('global/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>
 
 <!-- Scripts -->
 <script src="{{asset('global/js/core.js')}}"></script>
@@ -140,13 +85,18 @@
 <script src="{{asset('assets/js/sections/menu.js') }}"></script>
 <script src="{{asset('assets/js/sections/menubar.js') }}"></script>
 <script src="{{asset('assets/examples/js/dashboard/v1.js') }}"></script>
+
 {% block scriptsjs %}{% endblock %}
+<script src="{{ asset('global/js/components/datatables.js') }}"></script>
+<script src="{{ asset('assets/examples/js/tables/datatable.js') }}"></script>
 <script src="{{ asset('assets/examples/js/forms/advanced.js')}}"></script>
 
+<script src="{{ asset('custom/js/datedropper.js') }}"></script>
+<script src="{{ asset('custom/js/timedropper.js') }}"></script>
 
 
 <!-- pour les requetes ajax -->
-
+<script src="{{ asset('custom/js/mystyle.js') }}"></script>
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 

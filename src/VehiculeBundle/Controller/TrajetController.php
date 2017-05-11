@@ -28,7 +28,7 @@ class TrajetController extends Controller
 
         $trajets = $em->getRepository('VehiculeBundle:Trajet')->findAll();
 
-        return $this->render('trajet/index.html.twig', array(
+        return $this->render('@Vehicule/trajet/index.html.twig', array(
             'trajets' => $trajets,
         ));
     }
@@ -53,7 +53,7 @@ class TrajetController extends Controller
             return $this->redirectToRoute('trajet_show', array('id' => $trajet->getId()));
         }
 
-        return $this->render('trajet/new.html.twig', array(
+        return $this->render('@Vehicule/trajet/new.html.twig', array(
             'trajet' => $trajet,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class TrajetController extends Controller
     {
         $deleteForm = $this->createDeleteForm($trajet);
 
-        return $this->render('trajet/show.html.twig', array(
+        return $this->render('@Vehicule/trajet/show.html.twig', array(
             'trajet' => $trajet,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class TrajetController extends Controller
             return $this->redirectToRoute('trajet_edit', array('id' => $trajet->getId()));
         }
 
-        return $this->render('trajet/edit.html.twig', array(
+        return $this->render('@Vehicule/trajet/edit.html.twig', array(
             'trajet' => $trajet,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

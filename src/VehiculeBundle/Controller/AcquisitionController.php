@@ -28,7 +28,7 @@ class AcquisitionController extends Controller
 
         $acquisitions = $em->getRepository('VehiculeBundle:Acquisition')->findAll();
 
-        return $this->render('@Vehicule/@Vehicule/acquisition/index.html.twig', array(
+        return $this->render('@Vehicule/acquisition/index.html.twig', array(
             'acquisitions' => $acquisitions,
         ));
     }
@@ -53,7 +53,7 @@ class AcquisitionController extends Controller
             return $this->redirectToRoute('acquisition_show', array('id' => $acquisition->getId()));
         }
 
-        return $this->render('@Vehicule/@Vehicule/acquisition/new.html.twig', array(
+        return $this->render('@Vehicule/acquisition/new.html.twig', array(
             'acquisition' => $acquisition,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class AcquisitionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($acquisition);
 
-        return $this->render('@Vehicule/@Vehicule/acquisition/show.html.twig', array(
+        return $this->render('@Vehicule/acquisition/show.html.twig', array(
             'acquisition' => $acquisition,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -95,7 +95,7 @@ class AcquisitionController extends Controller
             return $this->redirectToRoute('acquisition_edit', array('id' => $acquisition->getId()));
         }
 
-        return $this->render('@Vehicule/@Vehicule/acquisition/edit.html.twig', array(
+        return $this->render('@Vehicule/acquisition/edit.html.twig', array(
             'acquisition' => $acquisition,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

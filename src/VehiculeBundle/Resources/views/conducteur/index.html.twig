@@ -1,10 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
-{% block pluginscss %}
-    <link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
-{% endblock %}
-
 {% block body %}
     <div class="row">
         <div class="col-lg-4 col-md-6">
@@ -81,6 +76,9 @@
                         class="btn btn-floating btn-info btn-sm waves-effect waves-float waves-light">
                     <i class="icon md-plus" aria-hidden="true"></i>
                 </button>
+                <a href="{{path('conducteur_index')}}" class="btn btn-floating btn-success btn-sm waves-effect waves-float waves-light">
+                    <i class="icon md-refresh" style="color:white;font:bold;" ></i>
+                </a>
             </div>
             <h3 class="panel-title">Vehicules</h3>
         </header>
@@ -141,15 +139,4 @@
     </div>
 
 
-{% endblock %}
-
-{% block scriptsjs %}
-    <script src="{{ asset('custom/js/datedropper.js') }}"></script>
-    <script>
-        $( ".mydate" ).dateDropper({
-            lang: 'fr',
-            animate:true,
-            format:'d-m-Y'
-        });
-    </script>
 {% endblock %}

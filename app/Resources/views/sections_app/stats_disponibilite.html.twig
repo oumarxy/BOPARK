@@ -1,6 +1,6 @@
 {% block menu_etat %}
     <div class="row" data-plugin="matchHeight" data-by-row="true">
-        <a href="#">
+        <a href="{{ path("vehicule_index")}}">
             <div class="col-lg-2 col-sm-6">
                 <!-- Widget Linearea Four -->
                 <div class="widget widget-shadow" id="widgetLineareaFour">
@@ -19,7 +19,7 @@
                 <!-- End Widget Linearea Four -->
             </div>
         </a>
-        <a href="#">
+        <a href="{{ path("vehicule_index", {'statut':"disponible"}) }}">
             <div class="col-lg-2 col-sm-6">
                 <!-- Widget Linearea Four -->
                 <div class="widget widget-shadow" id="widgetLineareaFour">
@@ -38,7 +38,7 @@
                 <!-- End Widget Linearea Four -->
             </div>
         </a>
-        <a href="#">
+        <a href="{{ path("vehicule_index", {'statut':"indisponible"}) }}">
             <div class="col-lg-2 col-sm-6">
                 <!-- Widget Linearea One-->
                 <div class="widget widget-shadow" id="widgetLineareaOne">

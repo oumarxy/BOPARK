@@ -22,13 +22,20 @@ class HomeController extends Controller
     public function indexAction()
     {
            
-   $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         $vehicules = $em->getRepository('VehiculeBundle:Vehicule')->findAll();
+        $utilisation = $em->getRepository('VehiculeBundle:Utilisation')->findAll();
+        $conducteur = $em->getRepository('VehiculeBundle:Conducteur')->findAll();
+        
         $countVehicule = count($vehicules);
+        $countUtilisation = count($utilisation);
+        $countConducteur = count($conducteur);
         return $this->render('@App/home/index.html.twig', array(
             'countVehicule' => $countVehicule,
+            'countUtilisation' => $countUtilisation,
+            'countConducteur' => $countConducteur,
         ));
     }
-
+  
 }

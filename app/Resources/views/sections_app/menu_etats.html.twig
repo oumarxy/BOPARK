@@ -19,7 +19,7 @@
                 <!-- End Widget Linearea Four -->
             </div>
         </a>
-        <a href="{{ path("utilisation_index_encours") }}">
+        <a href="{{ path("utilisation_index", {'etat':'EnCours'}) }}">
             <div class="col-lg-2 col-sm-6">
                 <!-- Widget Linearea One-->
                 <div class="widget widget-shadow" id="widgetLineareaOne">
@@ -38,7 +38,7 @@
                 <!-- End Widget Linearea One -->
             </div>
         </a>
-        <a href="{{ path("utilisation_index_attente") }}">
+        <a href="{{ path("utilisation_index", {'etat':'EnAttente'}) }}">
             <div class="col-lg-2 col-sm-6">
                 <!-- Widget Linearea Two -->
                 <div class="widget widget-shadow" id="widgetLineareaTwo">
@@ -57,7 +57,7 @@
                 <!-- End Widget Linearea Two -->
             </div>
         </a>
-        <a href="{{ path("utilisation_index_termine") }}">
+        <a href="{{ path("utilisation_index", {'etat':'Termine'}) }}">
             <div class="col-lg-2 col-sm-6">
                 <!-- Widget Linearea Three -->
                 <div class="widget widget-shadow" id="widgetLineareaThree">
@@ -76,7 +76,7 @@
                 <!-- End Widget Linearea Three -->
             </div>
         </a>
-        <a href="{{ path("utilisation_index_annule") }}">
+        <a href="{{ path("utilisation_index", {'etat':'Annule'}) }}">
             <div class="col-lg-2 col-sm-6">
                 <!-- Widget Linearea Four -->
                 <div class="widget widget-shadow" id="widgetLineareaFour">

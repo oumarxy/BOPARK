@@ -5,7 +5,7 @@
     <!-- Page -->
 
     <div class="row" data-plugin="matchHeight" data-by-row="true">
-
+        {#
         <div class="col-lg-12 col-sm-12">
             <div class="col-lg-3 col-sm-6">
                 <!-- Widget Linearea One-->
@@ -21,7 +21,7 @@
                             <div class="margin-bottom-20 grey-500">
                                 <i class="icon md-long-arrow-up green-500 font-size-16"></i> 15% From this yesterday
                             </div>
-                            <div class="ct-chart height-50"></div>
+                            <!--div class="ct-chart height-50"></div-->
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,6 @@
                             <div class="margin-bottom-20 grey-500">
                                 <i class="icon md-long-arrow-up green-500 font-size-16"></i> 34.2% From this week
                             </div>
-                            <div class="ct-chart height-50"></div>
                         </div>
                     </div>
                 </div>
@@ -61,7 +60,6 @@
                             <div class="margin-bottom-20 grey-500">
                                 <i class="icon md-long-arrow-down red-500 font-size-16"></i>  5% From this yesterday
                             </div>
-                            <div class="ct-chart height-50"></div>
                         </div>
                     </div>
                 </div>
@@ -81,13 +79,12 @@
                             <div class="margin-bottom-20 grey-500">
                                 <i class="icon md-long-arrow-up green-500 font-size-16"></i> 18.4% From this yesterday
                             </div>
-                            <div class="ct-chart height-50"></div>
                         </div>
                     </div>
                 </div>
                 <!-- End Widget Linearea Four -->
             </div>
-
+            #}
 
 
             <div class="clearfix"></div>
@@ -116,7 +113,7 @@
                     <!-- Widget Info -->
                     <div class="widget widget-shadow">
                         <div class="widget-header cover overlay">
-                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
+                            <div class="cover-background height-50" style="background-image: url('{{asset('global/photos/placeholder.png')}}')">
 
                                 <div class="font-size-20 padding-10">Gestion véhicules</div>
                             </div>
@@ -126,7 +123,7 @@
                                 <a class="list-group-item" href="{{path('vehicule_index')}}" role="menuitem">
                                     <div class="media">
                                         <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                                            <i class="icon md-car bg-blue-600 white icon-circle" aria-hidden="true"></i>
                                         </div>
                                         <div class="media-body padding-left-10">
                                             <h6 class="font-size-16 grey-600 media-heading">Parc</h6>
@@ -236,7 +233,7 @@
                     <!-- Widget Info -->
                     <div class="widget widget-shadow">
                         <div class="widget-header cover overlay">
-                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
+                            <div class="cover-background height-50" style="background-image: url('{{asset('global/photos/placeholder.png')}}')">
 
                                 <div class="font-size-20 padding-10">Utilisations</div>
                             </div>
@@ -246,11 +243,11 @@
                                 <a class="list-group-item" href="{{path('utilisation_index')}}" role="menuitem">
                                     <div class="media">
                                         <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                                            <i class="icon md-flash bg-blue-600 white icon-circle" aria-hidden="true"></i>
                                         </div>
                                         <div class="media-body padding-left-10">
                                             <h6 class="font-size-16 grey-600 media-heading">Utilisations</h6>
-                                            <span class="media-meta font-size-14 ">{{countVehicule}} Véhicule(s) </span>
+                                            <span class="media-meta font-size-14 ">{{countUtilisation}} Enrégistement(s) </span>
 
                                         </div>
                                     </div>
@@ -258,21 +255,11 @@
                                 <a class="list-group-item" href="{{ path("conducteur_index") }}" role="menuitem">
                                     <div class="media">
                                         <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                            <i class="icon md-account bg-green-600 white icon-circle" aria-hidden="true"></i>
                                         </div>
                                         <div class="media-body padding-left-10">
-                                            <h6 class="font-size-16 grey-600 media-heading">Collaborateurs </h6>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
-                                    <div class="media">
-                                        <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="media-body padding-left-10">
-                                            <h6 class="font-size-16 grey-600 media-heading">Ordre de mission</h6>
-                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">5 En cours</time>
+                                            <h6 class="font-size-16 grey-600 media-heading">Conducteurs</h6>
+                                            <span class="media-meta font-size-14 ">{{countConducteur}} Enrégistement(s) </span>
                                         </div>
                                     </div>
                                 </a>
@@ -289,7 +276,7 @@
                     <!-- Widget Info -->
                     <div class="widget widget-shadow">
                         <div class="widget-header cover overlay">
-                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
+                            <div class="cover-background height-50" style="background-image: url('{{asset('global/photos/placeholder.png')}}')">
 
                                 <div class="font-size-20 padding-10">Consommations</div>
                             </div>
@@ -391,71 +378,6 @@
                                         </div>
                                         <div class="media-body padding-left-10">
                                             <h6 class="font-size-16 grey-600 media-heading">Fichier de consommation </h6>
-                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
-                                        </div>
-                                    </div>
-                                </a>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- End Widget Info -->
-                </div>
-
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Widget Info -->
-                    <div class="widget widget-shadow">
-                        <div class="widget-header cover overlay">
-                            <div class="cover-background height-50" style="background-image: url('../../global/photos/placeholder.png')">
-
-                                <div class="font-size-20 padding-10">Gestion véhicules</div>
-                            </div>
-                        </div>
-                        <div class="widget-body padding-horizontal-0 padding-vertical-0" style="height:calc(100% - 250px);">
-                            <div class="font-size-20 grey-500">
-                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
-                                    <div class="media">
-                                        <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="media-body padding-left-10">
-                                            <h6 class="font-size-16 grey-600 media-heading">Parc</h6>
-                                            <time class="media-meta font-size-12 " datetime="2015-06-12T20:50:48+08:00">5 Véhicules </time>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
-                                    <div class="media">
-                                        <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="media-body padding-left-10">
-                                            <h6 class="font-size-16 grey-600 media-heading">Contrats d'achat </h6>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
-                                    <div class="media">
-                                        <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="media-body padding-left-10">
-                                            <h6 class="font-size-16 grey-600 media-heading">Contrats de location</h6>
-                                            <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">5 En cours</time>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a class="list-group-item" href="javascript:void(0)" role="menuitem">
-                                    <div class="media">
-                                        <div class="media-left padding-horizontal-5">
-                                            <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="media-body padding-left-10">
-                                            <h6 class="font-size-16 grey-600 media-heading">Contrats de leasing</h6>
                                             <time class="media-meta font-size-14 " datetime="2015-06-12T20:50:48+08:00">3 En cours</time>
                                         </div>
                                     </div>

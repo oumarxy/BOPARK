@@ -36,6 +36,8 @@ class ConducteurController extends Controller {
 
             $em->persist($conducteur);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add('success', 'Conducteur ajouté avec succès.');
             return $this->redirect($request->getUri());
         }
 
@@ -121,7 +123,8 @@ class ConducteurController extends Controller {
             $em->persist($conducteur);
             $em->flush();
 
-            return $this->redirectToRoute('conducteur_edit', array('id' => $conducteur->getId()));
+            $this->get('session')->getFlashBag()->add('info', 'Modification effectuée.');
+            return $this->redirectToRoute('conducteur_show', array('id' => $conducteur->getId()));
         }
 
         return $this->render('@Vehicule/conducteur/edit.html.twig', array(

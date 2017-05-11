@@ -123,6 +123,13 @@ class Vehicule
     private $typeacquisition;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", nullable=true)
+     */
+    private $path;
+
+    /**
      * Get id
      *
      * @return int
@@ -487,5 +494,29 @@ class Vehicule
     public function getDisponibilite()
     {
         return $this->disponibilite;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Vehicule
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

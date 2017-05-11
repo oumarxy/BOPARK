@@ -22,14 +22,25 @@ class UtilisationController extends Controller
     /**
      * Lists all Utilisation entities.
      *
-     * @Route("/", name="utilisation_index")
+     * @Route("/e/{etat}", name="utilisation_index", defaults={"etat"="tout"})
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($etat)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findAll();
+        if($etat=="Annule"){
+            $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'Annulé'));
+        }elseif($etat=="EnAttente"){
+            $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'En attente'));
+        }elseif($etat=="Termine"){
+            $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'Terminé'));
+        }elseif($etat=="EnCours"){
+            $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'En cours'));
+        }else{
+            $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findAll();
+        }
+
 
         $total = $this->getTotal();
 
@@ -45,8 +56,6 @@ class UtilisationController extends Controller
     }
 
     /**
-     * Lists all Utilisation entities.
-     *
      * @Route("/vehicule/{id}/attente", name="utilisation_vehicule_attente")
      * @Method("GET")
      */
@@ -58,91 +67,6 @@ class UtilisationController extends Controller
 
         return $this->render('@Vehicule/utilisation/index_vehicule_attente.html.twig', array(
             'utilisations' => $utilisations,
-        ));
-    }
-
-
-    /**
-     * @Route("/annule", name="utilisation_index_annule")
-     * @Method("GET")
-     */
-    public function indexAnnuleAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'Annulé'));
-        $total = $this->getTotal();
-
-        return $this->render('@Vehicule/utilisation/index_annule.html.twig', array(
-            'utilisations' => $utilisations,
-            'total' => $total["tout"],
-            'total_encours' => $total["encours"],
-            'total_enattente' => $total["attente"],
-            'total_termine' => $total["termine"],
-            'total_annule' => $total["annule"],
-        ));
-    }
-
-    /**
-     * @Route("/attente", name="utilisation_index_attente")
-     * @Method("GET")
-     */
-    public function indexAttenteAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'En attente'));
-        $total = $this->getTotal();
-
-        return $this->render('@Vehicule/utilisation/index_attente.html.twig', array(
-            'utilisations' => $utilisations,
-            'total' => $total["tout"],
-            'total_encours' => $total["encours"],
-            'total_enattente' => $total["attente"],
-            'total_termine' => $total["termine"],
-            'total_annule' => $total["annule"],
-        ));
-    }
-
-    /**
-     * @Route("/termine", name="utilisation_index_termine")
-     * @Method("GET")
-     */
-    public function indexTermineAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'Terminé'));
-        $total = $this->getTotal();
-
-        return $this->render('@Vehicule/utilisation/index_termine.html.twig', array(
-            'utilisations' => $utilisations,
-            'total' => $total["tout"],
-            'total_encours' => $total["encours"],
-            'total_enattente' => $total["attente"],
-            'total_termine' => $total["termine"],
-            'total_annule' => $total["annule"],
-        ));
-    }
-
-    /**
-     * @Route("/encours", name="utilisation_index_encours")
-     * @Method("GET")
-     */
-    public function indexEncoursAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $utilisations = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat' => 'En cours'));
-        $total = $this->getTotal();
-
-        return $this->render('@Vehicule/utilisation/index_encours.html.twig', array(
-            'utilisations' => $utilisations,
-            'total' => $total["tout"],
-            'total_encours' => $total["encours"],
-            'total_enattente' => $total["attente"],
-            'total_termine' => $total["termine"],
-            'total_annule' => $total["annule"],
         ));
     }
 
@@ -178,7 +102,7 @@ class UtilisationController extends Controller
     /**
      * Finds and displays a Utilisation entity.
      *
-     * @Route("/{id}", name="utilisation_show")
+     * @Route("/s/{id}", name="utilisation_show")
      * @Method("GET")
      */
     public function showAction(Utilisation $utilisation)
@@ -223,20 +147,10 @@ class UtilisationController extends Controller
                 $ancienVehicule->setDisponibilite("Disponible");
             } else {
                 if ($utilisation->getEtat() == "En cours") {
+                    $this->get('session')->getFlashBag()->add('warning', 'Ce véhicule est en cours d\'utilisation.');
                     return $this->redirectToRoute('utilisation_show', array('id' => $id));
                 }
             }
-
-            /*
-            if($ancienneDisponibiliteVehicule == "Indisponible"){
-                $utilisationUsed = $em->getRepository('VehiculeBundle:Utilisation')->findBy(array('etat'=>'En cours', 'vehicule'=>$idAncienVehicule));
-                //var_dump($ancienneDisponibiliteVehicule);die;
-                return $this->redirectToRoute('utilisation_show', array('id' => $utilisationUsed->getId()));
-            }
-
-            if($ancienVehicule !=  $utilisation->getVehicule() && $ancienneutilisation->getEtat() == "En cours"){
-              $ancienVehicule->setDisponibilite("Disponible");
-            }*/
 
             $utilisationIndisponible = $em->getRepository('VehiculeBundle:Utilisation')
                 ->findOneBy(array("vehicule" => $utilisation->getVehicule()->getId(), "etat" => "En cours"));
@@ -252,6 +166,7 @@ class UtilisationController extends Controller
             $em->persist($ancienVehicule);
             $em->persist($utilisation);
             $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'Modification effectuée avec succès.');
             return $this->redirectToRoute('utilisation_show', array('id' => $utilisation->getId()));
         }
 
@@ -265,7 +180,7 @@ class UtilisationController extends Controller
     /**
      * Deletes a Utilisation entity.
      *
-     * @Route("/{id}", name="utilisation_delete")
+     * @Route("/d/{id}", name="utilisation_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Utilisation $utilisation)

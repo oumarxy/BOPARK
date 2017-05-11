@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="{{ asset('global/vendor/icheck/icheck.css') }}"/>
     <link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.css') }}"/>
     <link rel="stylesheet" href="{{ asset('global/vendor/multi-select/multi-select.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('custom/css/datedropper.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('custom/css/timedropper.css') }}"/>
     <link rel="stylesheet" href="{{ asset('global/vendor/flag-icon-css/flag-icon.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/examples/css/forms/advanced.css') }}"/>
     <link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-markdown/bootstrap-markdown.css') }}"/>
@@ -17,11 +15,6 @@
         }
     </style>
 {% endblock %}
-
-{% block fontscss %}
-    <link rel="stylesheet" href="{{ asset('global/fonts/font-awesome/font-awesome.css') }}"/>
-{% endblock %}
-
 
 {% block body %}
     <div class="container" style="margin: 0 auto">
@@ -260,18 +253,5 @@
     <script src="{{ asset('global/js/components/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('global/js/components/select2.js') }}"></script>
     <script src="{{ asset('global/js/components/jquery-placeholder.js') }}"></script>
-
-    <script src="{{ asset('custom/js/datedropper.js') }}"></script>
-    <script src="{{ asset('custom/js/timedropper.js') }}"></script>
-    <script>
-        $( ".mytime" ).timeDropper({
-            format:'HH:mm',
-            setCurrentTime:false
-        });
-        $( ".mydate" ).dateDropper({
-            lang: 'fr',
-            animate:true,
-            format:'d-m-Y'
-        });
-    </script>
+   
 {% endblock %}

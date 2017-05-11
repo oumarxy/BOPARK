@@ -7,3 +7,12 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.my_uploader:
+        class: AppBundle\MyService\FileUploader
+        arguments: ['%images_directory%']
+
+    app.doctrine_images_listener:
+        class: AppBundle\EventListener\UploadListener
+        arguments: ['@app.my_uploader']
+        tags:
+            - { name: doctrine.event_listener, event: postLoad }

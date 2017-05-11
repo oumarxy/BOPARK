@@ -45,6 +45,7 @@
                             <span class="sr-only">Toggle fullscreen</span>
                         </a>
                     </li>
+                    {#
                     <li class="hidden-float">
                         <a class="icon md-search" data-toggle="collapse" href="#" data-target="#site-navbar-search"
                            role="button">
@@ -91,6 +92,7 @@
                             </li>
                         </ul>
                     </li>
+                    #}
                 </ul>
                 <!-- End Navbar Toolbar -->
                 <!-- Navbar Toolbar Right -->
@@ -115,7 +117,7 @@
                         <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
                            data-animation="scale-up" role="button">
                             <span class="avatar avatar-online">
-                                <img src="../../global/portraits/5.jpg" alt="...">
+                                <img src="{{asset('uploads/images/profils/5.png')}}" alt="...">
                                 <i></i>
                             </span>
                         </a>
@@ -287,6 +289,27 @@
             <div>
                 <div>
                     <ul class="site-menu">
+                        <li class="site-menu-item">
+                            <a class="animsition-link" href="{{ path("home_index") }}">
+                                <img src="{{ asset('custom/icons/Home-48.png') }}" width="40px" height="40px" />
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a class="animsition-link" href="{{ path("conducteur_index") }}">
+                                <img src="{{ asset('custom/icons/Driver-48.png') }}" width="40px" height="40px" />
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a class="animsition-link" href="{{ path("vehicule_index") }}">
+                                <img src="{{ asset('custom/icons/Garage-48.png') }}" width="40px" height="40px" />
+                            </a>
+                        </li>
+                        <li class="site-menu-item">
+                            <a class="animsition-link" href="{{ path("utilisation_index") }}">
+                                <img src="{{ asset('custom/icons/Planner-48.png') }}" width="40px" height="40px" />
+                            </a>
+                        </li>
+                        {#
                         <li class="site-menu-category">General</li>
                         <li class="dropdown site-menu-item has-sub">
                             <a class="dropdown-toggle" href="javascript:void(0)" data-dropdown-toggle="false">
@@ -316,7 +339,7 @@
                                 </div>
                             </div>
                         </li>
-                      
+
                         <li class="site-menu-category">General</li>
                         <li class="dropdown site-menu-item has-sub">
                             <a class="dropdown-toggle" href="javascript:void(0)" data-dropdown-toggle="false">
@@ -345,8 +368,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                      
+                        </li>#}
                     </ul>
                 </div>
             </div>

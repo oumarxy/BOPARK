@@ -22,7 +22,7 @@ class UtilisationType extends AbstractType
             ->add('vehicule')
             //->add('client')
             ->add('trajet', TrajetType::class)
-            ->add('conducteur')
+            ->add('conducteur',null, array('placeholder'=>''))
             ->add('dateDebut', DateType::class, array(
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy'))
@@ -30,6 +30,7 @@ class UtilisationType extends AbstractType
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy'))
             ->add('dateFinReel', DateType::class, array(
+                'required'=>false,
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy'))
             ->add('etat',ChoiceType::class,array('choices'=>array(

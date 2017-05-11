@@ -3,18 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Form/VoyageType.php</file>
-            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Controller/VehiculeController.php</file>
-            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Form/VehiculeType.php</file>
-            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Controller/ClientController.php</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/conducteur/index.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/config/config.yml</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/utilisation/show.html.twig</file>
             <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Form/UtilisationType.php</file>
-            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/vehicule/index.html.twig</file>
-            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Form/ClientType.php</file>
-            <file>file:/C:/NginxServer/www/BOPARK/web/assets/js/add.js</file>
             <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/utilisation/new.html.twig</file>
-            <file>file:/C:/NginxServer/www/BOPARK/web/assets/js/sections/menu.js</file>
-            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Controller/ConducteurController.php</file>
-            <file>file:/C:/NginxServer/www/BOPARK/web/assets/js/site.js</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/Resources/views/sections_app/main_sidebar.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/utilisation/edit.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/web/custom/js/timedropper.js</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/conducteur/edit.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/Resources/views/sections_app/header.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/AppBundle/Resources/views/home/index.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/config/services.yml</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/vehicule/index.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/Resources/views/sections_app/menu_etats.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/AppBundle/MyService/FileUploader.php</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/utilisation/index.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/vehicule/new.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/Resources/views/sections_app/stats_disponibilite.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Controller/VehiculeController.php</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/Resources/views/root.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/app/config/security.yml</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/conducteur/new.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/vehicule/edit.html.twig</file>
+            <file>file:/C:/NginxServer/www/BOPARK/web/custom/js/mystyle.js</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/AppBundle/EventListener/UploadListener.php</file>
+            <file>file:/C:/NginxServer/www/BOPARK/src/VehiculeBundle/Resources/views/vehicule/show.html.twig</file>
         </group>
     </open-files>
 </project-private>

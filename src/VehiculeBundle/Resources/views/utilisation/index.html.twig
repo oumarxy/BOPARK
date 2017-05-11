@@ -1,12 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block pluginscss %}
-    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/examples/css/tables/datatable.css') }}"/>
-{% endblock %}
-
 {% block body %}
 
 
@@ -17,6 +10,9 @@
                 <a href="{{ path('utilisation_new') }}"
                    class="btn btn-floating btn-info btn-sm waves-effect waves-float waves-light">
                     <i class="icon md-plus" style="color:white;font:bold;"></i>
+                </a>
+                <a href="{{path('utilisation_index')}}" class="btn btn-floating btn-success btn-sm waves-effect waves-float waves-light">
+                    <i class="icon md-refresh" style="color:white;font:bold;" ></i>
                 </a>
             </div>
             <h3 class="panel-title">Utilisation</h3>
@@ -60,7 +56,7 @@
                                     <i class="icon md-flash padding-3 bg-purple-600 white icon-circle" aria-hidden="true"></i>
                                 </a>
                             #}
-                            <a href="{{ path('utilisation_edit', { 'id': utilisation.id, 'type':'simple' }) }}">
+                            <a href="{{ path('utilisation_edit', { 'id': utilisation.id }) }}">
                                 <i class="icon md-edit bg-green-600 white icon-circle" aria-hidden="true"></i>
                             </a>
                             <a href="{{ path('utilisation_show', { 'id': utilisation.id }) }}">
@@ -103,17 +99,3 @@
 {# block javascripts %}
 
 {% endblock #}
-
-{% block pluginsjs %}
-    <script src="{{ asset('global/vendor/datatables/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
-    <script src="{{ asset('global/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>
-
-{% endblock %}
-
-{% block scriptsjs %}
-    <script src="{{ asset('global/js/components/datatables.js') }}"></script>
-    <script src="{{ asset('assets/examples/js/tables/datatable.js') }}"></script>
-{% endblock %}

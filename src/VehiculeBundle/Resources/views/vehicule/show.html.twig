@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{# block pluginscss %}
-    <link rel="stylesheet" href="{{ asset('assets/examples/css/advanced/masonry.css') }}"/>
-{% endblock #}
+{%  block pluginscss %}
+    {#
+    <link rel="stylesheet" href="{{ asset('global/vendor/toastr/toastr.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/examples/css/advanced/toastr.css') }}"/>#}
+
+{% endblock %}
 
 {% block body %}
-
     <div class="row">
         <div class="col-md-3">
             <div class="panel">
                 <figure class="overlay overlay-hover">
-                    <img class="overlay-figure" src="../../../global/photos/placeholder.png" alt="...">
+                    <img class="overlay-figure" alt="..." width="300px" height="250px" src="{{asset(vehicule.path)}}" alt="Vehicule" />
                     <figcaption class="overlay-bottom overlay-panel overlay-background overlay-slide-top">
-                        <h4>Overlay Bottom</h4>
+                        <h4>{{ vehicule.marque }}</h4>
                     </figcaption>
                 </figure>
             </div>
@@ -90,21 +92,19 @@
             </div>
         </div>
     </div>
-
-    <!--ul>
-        <li>
-            {# form_start(delete_form) }}
-            <input type="submit" value="Delete">
-            {{ form_end(delete_form) #}
-        </li>
-    </ul-->
 {% endblock %}
 
 
-{# block pluginsjs %}
-    <script src="{{ asset('global/vendor/masonry/masonry.pkgd.min.js') }}"></script>
-{% endblock #}
+{%  block pluginsjs %}
 
-{# block scriptsjs %}
-    <script src="{{ asset('global/js/components/masonry.js') }}"></script>
-{% endblock #}
+
+
+
+
+
+{% endblock %}
+
+
+{%  block scriptsjs %}
+    {#<script src="{{ asset('global/js/components/toastr.js') }}"></script>#}
+{% endblock %}
