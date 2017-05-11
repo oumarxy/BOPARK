@@ -1,68 +1,33 @@
-Symfony Standard Edition
-========================
-
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
-
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
+BOPARK with SF
 --------------
+## Synopsis
 
-The Symfony Standard Edition is configured with the following defaults:
+At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
 
-  * An AppBundle you can use to start coding;
+## Code Example
 
-  * Twig as the only configured template engine;
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
-  * Doctrine ORM/DBAL;
+## Motivation
 
-  * Swiftmailer;
+A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
 
-  * Annotations enabled for everything.
+## Installation
 
-It comes pre-configured with the following bundles:
+Provide code examples and explanations of how to get the project.
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+## API Reference
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+## Tests
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+Describe and show how to run the tests with code examples.
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+## Contributors
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+## License
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.0/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.0/book/doctrine.html
-[8]:  https://symfony.com/doc/3.0/book/templating.html
-[9]:  https://symfony.com/doc/3.0/book/security.html
-[10]: https://symfony.com/doc/3.0/cookbook/email.html
-[11]: https://symfony.com/doc/3.0/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/3.0/bundles/SensioGeneratorBundle/index.html
+A short snippet describing the license (MIT, Apache, etc.)
